@@ -1,0 +1,40 @@
+name: node pipeline
+
+on:
+  push:
+    branches: ["main"]
+
+  workflow_dispatch: 
+
+jobs:
+  node:
+    runs-on: ["wsl-ubuntu-rk"]
+
+    steps:
+      - name: Clone the repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js application
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: env file
+        run: |
+          echo "PORT=8080" >> .env.development
+          echo "APP=GHA-DEV-APP" >> .env.development
+          
+          echo "PORT=5000" >> .env.production
+          echo "APP=GHA-PROD-APP" >> .env.production
+
+      - name: Run application
+        run: |
+         node server.js & 
+         sleep 5 
+         curl http://localhost:8080
+         curl http://localhost:8080/health
+         pkill -f "node server.js"
+        
