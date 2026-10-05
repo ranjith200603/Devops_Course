@@ -1,0 +1,12 @@
+name : basic pipeline name to deops learn
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  basic:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: basic pipeline
+        run: echo "this is test"
