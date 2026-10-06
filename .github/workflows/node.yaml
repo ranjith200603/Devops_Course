@@ -8,7 +8,7 @@ on:
 
 jobs:
   node:
-    runs-on: ["wsl-ubuntu-rk"]
+    runs-on: [" ranjith-ubuntu"]
 
     steps:
       - name: Clone the repository
