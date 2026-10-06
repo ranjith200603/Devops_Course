@@ -8,7 +8,7 @@ on:
 
 jobs:
   node:
-    runs-on: [" ranjith-ubuntu"]
+    runs-on: ["ranjith-ubuntu"]
 
     steps:
       - name: Clone the repository
