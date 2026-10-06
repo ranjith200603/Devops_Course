@@ -1,0 +1,5 @@
+Devops_Course/
+actions-runner/
+node_modules/
+.env
+.env.*
