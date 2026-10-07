@@ -1,0 +1,29 @@
+name: SonarQube PR Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  sonar:
+    runs-on: ranjith-ubuntu
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        working-directory: nodeapp
+        run: npm install
+
+      - name: Run SonarQube Scan
+        working-directory: nodeapp
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: npm run sonar
