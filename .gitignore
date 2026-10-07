@@ -4,3 +4,24 @@ node_modules/
 .env
 .env.*
 node_modules/
+
+
+# GitHub Actions self-hosted runner
+.credentials
+.credentials_rsaparams
+.path
+.runner
+_diag/
+_work/
+bin/
+externals/
+config.sh
+env.sh
+run-helper.cmd.template
+run-helper.sh
+run-helper.sh.template
+run.sh
+safe_sleep.sh
+svc.sh
+actions-runner-linux-x64-*.tar.gz
+EOF
