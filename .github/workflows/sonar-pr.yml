@@ -7,7 +7,7 @@ on:
 
 jobs:
   sonar:
-    runs-on: self-hosted
+    runs-on: ranjith-ubuntu
 
     steps:
       - name: Checkout code
@@ -24,4 +24,6 @@ jobs:
 
       - name: Run SonarQube Scan
         working-directory: nodeapp
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: npm run sonar
