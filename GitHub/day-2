@@ -1,0 +1,187 @@
+# Day 2 - Advanced Git & GitHub Management
+
+## 1. Git Reset
+
+Git Reset moves the current branch to another commit.
+
+### Soft Reset
+
+Keeps changes staged and in the working directory.
+
+```bash
+git reset --soft HEAD~1
+```
+
+### Hard Reset
+
+Deletes changes completely.
+
+```bash
+git reset --hard HEAD~1
+```
+
+---
+
+## 2. Git Revert
+
+Git Revert creates a **new commit** that reverses the changes of an earlier commit.
+
+```bash
+git revert <commit-id>
+```
+
+It is safer for shared/public branches.
+
+---
+
+## 3. Reset vs Revert
+
+| Reset                  | Revert                    |
+| ---------------------- | ------------------------- |
+| Changes commit history | Keeps history             |
+| Can remove commits     | Creates a new undo commit |
+| Useful for local work  | Safe for shared branches  |
+
+---
+
+## 4. Squash Commit
+
+Squashing combines multiple commits into one clean commit.
+
+```bash
+git rebase -i HEAD~3
+```
+
+Change `pick` to `squash` for the commits you want to combine.
+
+---
+
+## 5. Cherry Pick
+
+Cherry-pick applies a specific commit from another branch.
+
+```bash
+git cherry-pick <commit-id>
+```
+
+Useful when you need only one particular change.
+
+---
+
+## 6. Git Rebase
+
+Rebase moves or reapplies commits on top of another branch.
+
+```bash
+git switch new
+git rebase main
+```
+
+It creates a cleaner, linear history.
+
+---
+
+## 7. Git Merge
+
+Merge combines changes from one branch into another.
+
+```bash
+git switch main
+git merge new
+```
+
+It preserves the history of both branches.
+
+---
+
+## 8. Rebase vs Merge
+
+| Rebase                          | Merge                             |
+| ------------------------------- | --------------------------------- |
+| Creates linear history          | Preserves branch history          |
+| Rewrites commit history         | Does not rewrite existing commits |
+| Good for cleaning local history | Good for shared branches          |
+
+---
+
+# GitHub Repository Management
+
+### Repository Creation
+
+Create a repository on GitHub and connect it with the local repository.
+
+```bash
+git remote add origin <repository-url>
+git push -u origin main
+```
+
+### Teams & Permissions
+
+GitHub allows team members to have different access levels such as **Read, Write, Maintain, and Admin**.
+
+### Branch Protection
+
+Branch rules can prevent direct pushes and require pull requests or reviews before merging.
+
+### CODEOWNERS
+
+`CODEOWNERS` defines which users or teams are responsible for specific files.
+
+Example:
+
+```text
+/docs/ @team-name
+```
+
+---
+
+# SSH Key Setup
+
+Generate an SSH key:
+
+```bash
+ssh-keygen -t ed25519 -C "your-email@example.com"
+```
+
+Start SSH agent:
+
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+
+Copy the public key:
+
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+
+Add the key in:
+
+**GitHub → Settings → SSH and GPG keys → New SSH key**
+
+Test:
+
+```bash
+ssh -T git@github.com
+```
+
+---
+
+# Webhooks
+
+Webhooks automatically send information to another application when an event occurs.
+
+### Uses:
+
+* CI/CD automation
+* Deployment triggers
+* Notifications
+* Third-party integrations
+
+Example:
+
+```text
+GitHub Push → Webhook → CI/CD Server → Deployment
+```
+

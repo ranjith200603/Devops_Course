@@ -3,8 +3,6 @@ actions-runner/
 node_modules/
 .env
 .env.*
-node_modules/
-
 
 # GitHub Actions self-hosted runner
 .credentials
@@ -24,5 +22,6 @@ run.sh
 safe_sleep.sh
 svc.sh
 actions-runner-linux-x64-*.tar.gz
-EOF
+
+# SonarQube generated files
 nodeapp/.scannerwork/
